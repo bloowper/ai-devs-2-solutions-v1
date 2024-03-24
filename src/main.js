@@ -31,7 +31,6 @@ async function main() {
         const solutionToTask = taskResolver.resolve(aiDevsTaskContent)
         console.log(`Solution to task resolved`);
         console.log(solutionToTask);
-        console.log(`Posting solution to aiDevs`)
         const aiDevsTaskReviewAnswer = await aiDevsRestClient.postAnswer(
             aiDevsTaskTokenResponse.token,
             {answer: solutionToTask}

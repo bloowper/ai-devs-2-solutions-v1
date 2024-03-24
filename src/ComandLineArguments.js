@@ -8,7 +8,7 @@ class CommandLineArguments {
     static initialize() {
         const argv = yargs(hideBin(process.argv)).argv;
         if (!argv.taskname) {
-            throw new Error('taskname argument is not provided.');
+            throw new Error('taskname argument is not provided. you need to provide --taskname="taskname"');
         }
         this._taskname = argv.taskname;
         this._initialized = true;
