@@ -3,9 +3,9 @@
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const argv = yargs(hideBin(process.argv)).argv;
-const EnvironmentVariables = require('./envs');
+const EnvironmentVariables = require('./Envs.js');
 const CommandLineArguments = require('./ComandLineArguments');
-const AiDevsRestClient = require('./aiDevs');
+const AiDevsRestClient = require('./AiDevs.js');
 yargs(hideBin(process.argv))
 
 
@@ -17,7 +17,6 @@ const aiDevsRestClient = new AiDevsRestClient(EnvironmentVariables.getAiDevsApiK
 async function main() {
     try {
         var taskName = CommandLineArguments.getTaskName()
-
         console.log(`Requesting aiDevs for [${taskName}] task token`)
         const aiDevsTaskTokenResponse = await aiDevsRestClient.getTaskToken(taskName);
         console.log(`Token respponse received`);
@@ -28,7 +27,7 @@ async function main() {
         console.log(aiDevsTaskContent);
         console.log(`Getting resolver for task ${taskName}`)
         const taskResolver = await import(`./tasks/${taskName}/solution.js`);
-        const solutionToTask = taskResolver.resolve(aiDevsTaskContent)
+        const solutionToTask = await taskResolver.resolve(aiDevsTaskContent)
         console.log(`Solution to task resolved`);
         console.log(solutionToTask);
         const aiDevsTaskReviewAnswer = await aiDevsRestClient.postAnswer(

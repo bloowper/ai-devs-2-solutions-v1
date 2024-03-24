@@ -7,7 +7,7 @@ class EnvironmentVariables {
     static _initialized = false;
 
     static initialize() {
-        this._apiKey = process.env.OPEN_AI_API_KEY;
+        this._apiKey = process.env.OPENAI_API_KEY;
         if (!this._apiKey) {
             throw new Error('OPEN_AI_API_KEY is not defined in the environment.');
         }

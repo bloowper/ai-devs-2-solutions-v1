@@ -14,7 +14,7 @@ class AiDevsRestClient {
       const response = await axios.post(`${this.baseURL}/token/${taskName}`, {
         apikey: this.apiKey
       });
-      return response.data; // Process and possibly return the token
+      return response.data;
     } catch (error) {
       console.error('Error fetching token:', error);
       throw error;
@@ -27,7 +27,7 @@ class AiDevsRestClient {
     }
     try {
       const response = await axios.get(`${this.baseURL}/task/${taskToken}`);
-      return response.data; // Process and return task data
+      return response.data;
     } catch (error) {
       console.error(`Error fetching task with ID ${taskToken}:`, error);
       throw error;
@@ -42,7 +42,7 @@ class AiDevsRestClient {
     console.log(answer)
     try {
       const response = await axios.post(`${this.baseURL}/answer/${id}`,answer);
-      return response.data; // Process and return response from posting the answer
+      return response.data;
     } catch (error) {
       console.error(`Error posting answer for task ID ${id}:`);
       throw error;
