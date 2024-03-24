@@ -1,4 +1,5 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 class EnvironmentVariables {
@@ -36,4 +37,4 @@ class EnvironmentVariables {
     }
 }
 
-module.exports = EnvironmentVariables;
+export default EnvironmentVariables;

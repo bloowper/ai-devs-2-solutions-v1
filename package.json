@@ -1,8 +1,9 @@
 {
   "name": "orchowski.tomasz",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
-  "main": "app.js",
+  "main": "src/Main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/main.js"

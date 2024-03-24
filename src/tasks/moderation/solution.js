@@ -1,7 +1,7 @@
 import OpenAI from 'openai';
 
 
-exports.resolve = async function(taskContent) {
+export async function resolve(taskContent) {
     const openai = new OpenAI();
     const moderation = await openai.moderations.create({ input: "I want to kill them." });
 

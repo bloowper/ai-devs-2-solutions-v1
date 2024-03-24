@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 class AiDevsRestClient {
   constructor(apiKey) {
@@ -50,4 +50,4 @@ class AiDevsRestClient {
   }
 }
 
-module.exports = AiDevsRestClient;
+export default AiDevsRestClient;

@@ -1,4 +1,4 @@
 
-exports.resolve = function(taskContent) {
+export async function resolve(taskContent) {
     return taskContent.cookie
 };

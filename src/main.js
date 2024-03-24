@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
+import EnvironmentVariables from './Envs.js';
+import CommandLineArguments from './ComandLineArguments.js';
+import AiDevsRestClient from './AiDevs.js';
+
 const argv = yargs(hideBin(process.argv)).argv;
-const EnvironmentVariables = require('./Envs.js');
-const CommandLineArguments = require('./ComandLineArguments');
-const AiDevsRestClient = require('./AiDevs.js');
-yargs(hideBin(process.argv))
 
 
 EnvironmentVariables.initialize()
@@ -43,7 +43,8 @@ async function main() {
             console.log(`Task not solved successfully`);
         }
     } catch (error) {
-        console.error('An error occurred:', error.body);
+        console.error('An error occurred:');
+        console.error(error);
     }
 }
 

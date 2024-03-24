@@ -1,5 +1,5 @@
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
 
 class CommandLineArguments {
     static _taskname = null;
@@ -26,4 +26,4 @@ class CommandLineArguments {
     }
 }
 
-module.exports = CommandLineArguments;
+export default CommandLineArguments;
