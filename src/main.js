@@ -44,7 +44,7 @@ async function main() {
             console.log(`Task not solved successfully`);
         }
     } catch (error) {
-        console.error('An error occurred:', error);
+        console.error('An error occurred:', error.body);
     }
 }
 
