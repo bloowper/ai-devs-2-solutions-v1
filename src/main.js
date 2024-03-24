@@ -27,7 +27,7 @@ async function main() {
         console.log(`Task content received`);
         console.log(aiDevsTaskContent);
         console.log(`Getting resolver for task ${taskName}`)
-        const taskResolver = await import(`./tasks/${taskName}.js`);
+        const taskResolver = await import(`./tasks/${taskName}/solution.js`);
         const solutionToTask = taskResolver.resolve(aiDevsTaskContent)
         console.log(`Solution to task resolved`);
         console.log(solutionToTask);
