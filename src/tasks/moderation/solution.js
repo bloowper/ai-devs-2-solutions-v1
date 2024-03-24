@@ -2,9 +2,13 @@ import OpenAI from 'openai';
 
 
 export async function resolve(taskContent) {
-    const openai = new OpenAI();
-    const moderation = await openai.moderations.create({ input: "I want to kill them." });
-
-    console.log(moderation);
-    return "TODO"
+    const openai = new OpenAI()
+    const moderations = await Promise.all(
+        taskContent.input.map(async (content) => {
+            const moderation = await openai.moderations.create({ input: content });
+            return moderation;
+        }
+        )
+    )
+    return moderations.map(moderation => moderation.results[0].flagged ? 1 : 0);
 };

@@ -36,16 +36,19 @@ class AiDevsRestClient {
 
   async postAnswer(id, answer) {
     if (!id || !answer) {
-        throw new Error('Task ID and answer are required');
+      throw new Error('Task ID and answer are required');
     }
-    console.log(`Posting answer for task ID ${id}`);
-    console.log(answer)
     try {
-      const response = await axios.post(`${this.baseURL}/answer/${id}`,answer);
+      const response = await axios.post(`${this.baseURL}/answer/${id}`, answer);
       return response.data;
     } catch (error) {
-      console.error(`Error posting answer for task ID ${id}:`);
-      throw error;
+      if (error.response) {
+        console.error(`Error posting answer for task ID ${id}: Status code: ${error.response.status}, Body: ${JSON.stringify(error.response.data)}`);
+        throw new Error(`Failed to post answer for task ID ${id}: Received status code ${error.response.status}`);
+      } else {
+        console.error(`Error posting answer for task ID ${id}:`, error.message);
+        throw new Error(`Failed to post answer for task ID ${id}: ${error.message}`);
+      }
     }
   }
 }
